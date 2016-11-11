@@ -30,20 +30,31 @@ public class MainPanel extends JPanel {
     public Cell[][] getCells() {
 	return _cells;
     }
-
+    
+    //Remove while loop, keep other local fields in case they will be used in the future
     private int convertToInt(int x) {
-	int c = 0;
-	String padding = "0";
-	while (c < _r) {
-	    String l = new String("0");
-	    padding += l;
-	    c++;
-	}
-	
-	String n = padding + String.valueOf(x);
-	int q = Integer.parseInt(n);
-	return q;
+    	String padding = "0";
+    	String n = padding + String.valueOf(x);
+    	int q = Integer.parseInt(n);
+    	return q;
     }
+
+    //Origin Method
+//    private int convertToInt(int x) {
+//	int c = 0;
+//	String padding = "0";
+//	while (c < _r) {
+//	    String l = new String("0");
+//	    padding += l;
+//	    c++;
+//	}
+//	
+//	String n = padding + String.valueOf(x);
+//	int q = Integer.parseInt(n);
+//	return q;
+//    }
+    
+    
     
     private int getNumNeighbors(int x, int y) {
 	int size = _size;
@@ -218,24 +229,35 @@ public class MainPanel extends JPanel {
     /**
      * Run the system continuously.
      */
-
+    
+    //Remove for loop and try... catch...
     public void runContinuous() {
-	_running = true;
-	while (_running) {
-	    System.out.println("Running...");
-	    int origR = _r;
-	    try {
-		Thread.sleep(20);
-	    } catch (InterruptedException iex) { }
-	    for (int j=0; j < _maxCount; j++) {
-	    	_r += (j % _size) % _maxCount;
-		_r += _maxCount;
-	    }
-	    _r = origR;
-	    backup();
-	    calculateNextIteration();
-	}
-    }
+    	_running = true;
+    	while (_running) {
+    	    System.out.println("Running...");
+    	    backup();
+    	    calculateNextIteration();
+    	}
+        }
+
+    //Origin runContinuous()
+//    public void runContinuous() {
+//	_running = true;
+//	while (_running) {
+//	    System.out.println("Running...");
+//	    int origR = _r;
+//	    try {
+//		Thread.sleep(20);
+//	    } catch (InterruptedException iex) { }
+//	    for (int j=0; j < _maxCount; j++) {
+//	    	_r += (j % _size) % _maxCount;
+//		_r += _maxCount;
+//	    }
+//	    _r = origR;
+//	    backup();
+//	    calculateNextIteration();
+//	}
+//    }
 
     /**
      * Stop a continuously running system.

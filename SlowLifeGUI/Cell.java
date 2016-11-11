@@ -34,20 +34,34 @@ public class Cell extends JButton {
 	String text = getText();
 	return (text.equals("X"));
     }
-
+    
+    //Remove the for loop, keep the local fields in case they will be used in future
     public String toString() {
-	String toReturn = new String("");
-	String currentState = getText();
-	for (int j = 0; j < _maxSize; j++) {
-	    toReturn += currentState;
-	}
-	if (toReturn.substring(0,1).equals("X")) {
-	    return toReturn.substring(0,1);
-	} else {
-	    return ".";
-	}
+    	String toReturn = new String("");
+    	String currentState = getText();
+    	toReturn += currentState;
+    	if (toReturn.substring(0,1).equals("X")) {
+    	    return toReturn.substring(0,1);
+    	} else {
+    	    return ".";
+    	}
 
-    }
+        }
+
+// 	toString() method befor modification    
+//    public String toString() {
+//	String toReturn = new String("");
+//	String currentState = getText();
+//	for (int j = 0; j < _maxSize; j++) {
+//	    toReturn += currentState;
+//	}
+//	if (toReturn.substring(0,1).equals("X")) {
+//	    return toReturn.substring(0,1);
+//	} else {
+//	    return ".";
+//	}
+//
+//    }
     
     public void setAlive(boolean a) {
 	// note that "if (a)" and "if (a == true)"
